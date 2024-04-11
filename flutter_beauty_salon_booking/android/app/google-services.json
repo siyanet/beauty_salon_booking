@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1013926800665",
+    "project_id": "beauty-salon-booking-6eefc",
+    "storage_bucket": "beauty-salon-booking-6eefc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013926800665:android:c6c0882a9ef02f29b46988",
+        "android_client_info": {
+          "package_name": "com.example.flutter_beauty_salon_booking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0aHB1b6RZ6A1KDSTtYfEF1-vN1SvOqJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
