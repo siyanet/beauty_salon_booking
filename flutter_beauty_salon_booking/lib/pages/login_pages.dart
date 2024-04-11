@@ -5,18 +5,21 @@ import 'package:flutter_beauty_salon_booking/components/my_alert_dialog.dart';
 import 'package:flutter_beauty_salon_booking/components/my_image.dart';
 import 'package:flutter_beauty_salon_booking/components/my_text_field.dart';
 import 'package:flutter_beauty_salon_booking/components/mybutton.dart';
+import 'package:flutter_beauty_salon_booking/controllers/role_navigator.dart';
 import 'package:flutter_beauty_salon_booking/services/auth_services.dart';
 
 
 class LogIn extends StatelessWidget{
-  final TextEditingController usernamecontroller = TextEditingController();
+  final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
   void login(BuildContext context) async{
     final _authService = AuthService();
     try{
-      await _authService.signInWithEmailAndPassword(usernamecontroller.text, passwordcontroller.text);
-   Navigator.pop(context);
-    Navigator.pushNamed(context,'/home_page');
+     UserCredential userCredential = await _authService.signInWithEmailAndPassword(emailcontroller.text, passwordcontroller.text);
+     RoleNavigator roleNavigator = RoleNavigator();
+       roleNavigator.navigate(context,userCredential);
+  //  Navigator.pop(context);
+  //   Navigator.pushNamed(context,'/home_page');
 
     }
     catch (e){
@@ -44,7 +47,7 @@ class LogIn extends StatelessWidget{
         ),
         SizedBox(height: 10),
      Padding(padding: EdgeInsets.all(10),
-     child:   MyTextField(controller: usernamecontroller, obsecureText: false,hintText: "enter username",),),
+     child:   MyTextField(controller: emailcontroller, obsecureText: false,hintText: "enter username",),),
 
        
             SizedBox(height: 10),

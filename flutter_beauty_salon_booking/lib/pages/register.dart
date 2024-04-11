@@ -5,6 +5,7 @@ import 'package:flutter_beauty_salon_booking/components/my_alert_dialog.dart';
 import 'package:flutter_beauty_salon_booking/components/my_image.dart';
 import 'package:flutter_beauty_salon_booking/components/my_text_field.dart';
 import 'package:flutter_beauty_salon_booking/components/mybutton.dart';
+import 'package:flutter_beauty_salon_booking/controllers/role_navigator.dart';
 import 'package:flutter_beauty_salon_booking/models/users_model.dart';
 import 'package:flutter_beauty_salon_booking/services/auth_services.dart';
 
@@ -19,11 +20,13 @@ class register extends StatelessWidget{
     try{
     UserCredential userCredential =   await _authService.signUpWithEmailAndPassword(emailController.text, passwordcontroller.text);
    
-     usermodel userone = usermodel(userCredential.user!.uid,firstNameController.text,lastNameController.text,phoneNumberController.text,"customer");
+     usermodel userone = usermodel(userCredential.user!.uid,firstNameController.text,lastNameController.text,phoneNumberController.text,"Customer");
  FirebaseFirestore firestore = FirebaseFirestore.instance;
     firestore.collection("users").doc(userone.id).set(userone.userMap());
-       Navigator.pop(context);
-        Navigator.pushNamed(context,'/home_page');
+    RoleNavigator roleNavigator = RoleNavigator();
+    roleNavigator.navigate(context,userCredential);
+      //  Navigator.pop(context);
+      //   Navigator.pushNamed(context,'/home_page');
 
 
     }
