@@ -42,8 +42,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_home_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/login_pages.dart';
+import 'package:flutter_beauty_salon_booking/pages/manager_navigator_page.dart';
 
-import 'package:flutter_beauty_salon_booking/pages/manger_home_page.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({Key? key}) : super(key: key);
@@ -67,7 +67,7 @@ class AuthGate extends StatelessWidget {
                   // Role data fetched successfully
                   String role = roleSnapshot.data!;
                   if (role == "Manager") {
-                    return ManagerHomePage();
+                    return ManagerNavigatorPage();
                   } else if (role == "Customer") {
                     return CustomerHomePage();
                   } else {

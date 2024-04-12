@@ -18,9 +18,7 @@ class LogIn extends StatelessWidget{
      UserCredential userCredential = await _authService.signInWithEmailAndPassword(emailcontroller.text, passwordcontroller.text);
      RoleNavigator roleNavigator = RoleNavigator();
        roleNavigator.navigate(context,userCredential);
-  //  Navigator.pop(context);
-  //   Navigator.pushNamed(context,'/home_page');
-
+  
     }
     catch (e){
      showDialog(context: context, builder: (context) => MyAlertDialog(title: e.toString()));

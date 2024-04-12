@@ -10,9 +10,12 @@ dependencies:
   cloud_firestore: ^4.16.1
   firebase_auth: ^4.19.1
   firebase_core: ^2.29.0
+  firebase_storage: ^11.7.1
   flutter:
     sdk: flutter
+  google_nav_bar: ^5.0.6
   http: ^1.2.1
+  image_picker: ^1.0.8
   provider: ^6.1.2
 
 dev_dependencies:

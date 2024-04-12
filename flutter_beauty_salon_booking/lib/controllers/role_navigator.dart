@@ -1,5 +1,4 @@
 
-import 'dart:js';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,10 +24,16 @@ class RoleNavigator{
       // Retrieve and return the "role" field
       String role = userData['role'];
       if (role == "Manager"){
+        Navigator.pop(context);
         Navigator.pushNamed(context,"/manager_home_page");
       }
       else if(role == "Customer"){
+        Navigator.pop(context);
         Navigator.pushNamed(context, "/customer_home_page");
+      }
+      else{
+          Navigator.pop(context);
+        Navigator.pushNamed(context, "/login_page");
       }
     } else {
       // User document does not exist

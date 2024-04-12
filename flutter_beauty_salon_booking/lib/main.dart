@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_beauty_salon_booking/firebase_options.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_home_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/login_pages.dart';
+import 'package:flutter_beauty_salon_booking/pages/manager_service_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/manger_home_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/register.dart';
 import 'package:flutter_beauty_salon_booking/pages/reset_password_page.dart';
+import 'package:flutter_beauty_salon_booking/pages/add_service_page.dart';
 import 'package:flutter_beauty_salon_booking/services/auth_gate.dart';
 import 'package:provider/provider.dart';
 
@@ -29,6 +31,8 @@ class MainApp extends StatelessWidget {
         "/password_reset_page":(context) => ForgotPasswordPage(),
         "/customer_home_page":(context) => CustomerHomePage(),
         "/manager_home_page": (context) => ManagerHomePage(),
+        "/manager_service_page":(context) => ManagerServicePage(),
+        "/add_service_page":(context) => AddService(),
       // "/shop_page":(context)=>const ShopPage(),
        // "/cart_page":(context)=>const CartPage(),
       },
