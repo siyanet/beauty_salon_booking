@@ -57,7 +57,7 @@ class AuthGate extends StatelessWidget {
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
+           if (snapshot.hasData) {
             // User is signed in
             String uid = snapshot.data!.uid;
            
@@ -91,9 +91,9 @@ class AuthGate extends StatelessWidget {
               },
             );
           } else {
-            // User is not signed in
+           // User is not signed in
             return LogIn();
-          }
+         }
         },
       ),
     );

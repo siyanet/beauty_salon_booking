@@ -135,13 +135,13 @@ import 'package:flutter_beauty_salon_booking/models/time_slot_model.dart';
 import 'package:flutter_beauty_salon_booking/services/time_slot_services.dart';
 
 class TimeSlotGenerator {
-  static void generateTimeSlots({
+  static Future<void> generateTimeSlots ({
     required DateTime startDate,
     required int numberOfDays,
     required int startHour,
     required int endHour,
     required int intervalMinutes,
-  }) {
+  }) async{
     // Create a single instance of TimeSlotServices
     TimeSlotServices timeSlots = TimeSlotServices();
 
@@ -161,18 +161,23 @@ class TimeSlotGenerator {
     //     startTime = slotEndTime; // Increment startTime
     //   }
     // }
+    int id = 0;
        for (int i = 0; i < numberOfDays; i++) {
     DateTime day = startDate.add(Duration(days: i));
     DateTime startTime = DateTime(day.year, day.month, day.day, startHour);
     DateTime endTime = DateTime(day.year, day.month, day.day, endHour);
     
     while (startTime.isBefore(endTime)) {
+
+      
       DateTime slotEndTime = startTime.add(Duration(minutes: intervalMinutes));
       if (slotEndTime.isAfter(endTime)) {
         slotEndTime = endTime;
       }
       TimeSlotServices timeSlots = TimeSlotServices();
-      timeSlots.addTimeSlot(TimeSlot(startTime: startTime, endTime: slotEndTime));
+      TimeSlot timeSlot = TimeSlot(startTime: startTime, endTime: endTime);
+     await  timeSlots.addTimeSlot(id,timeSlot);
+     id++;
       startTime = slotEndTime; // Increment startTime
     }
   }

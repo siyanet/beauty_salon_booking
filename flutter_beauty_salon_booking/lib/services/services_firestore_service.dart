@@ -10,7 +10,7 @@ final CollectionReference servicesCollection  = FirebaseFirestore.instance.colle
     currentId = int.parse(lastDocument.docs.first.get('id')) + 1;
   }
   return servicesCollection.add({
-    'id': currentId,
+    'id': currentId.toString(),
     'description': service.description,
     'duration': service.duration,
     'name': service.name,
@@ -27,7 +27,7 @@ Stream<List<Service>> getAllServicesStream() {
     return snapshot.docs.map((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       return Service(
-        id: doc.id,
+        id: data['id'],
         name: data['name'],
         description: data['description'],
         price: data['price'],
@@ -45,7 +45,7 @@ Stream <Service?> getServiceByIdStream(String serviceId) {
      {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       return Service(
-        id: doc.id,
+        id: data['id'],
         name: data['name'],
         description: data['description'],
         price: data['price'],
@@ -66,7 +66,7 @@ Stream<List<Service>> getServicesByListIdsStream(List<String> serviceIds) {
     return snapshot.docs.map((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       return Service(
-        id: doc.id,
+        id: data['id'],
         name: data['name'],
         description: data['description'],
         price: data['price'],

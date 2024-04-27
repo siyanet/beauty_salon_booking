@@ -2,11 +2,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_beauty_salon_booking/models/services_model.dart';
+import 'package:flutter_beauty_salon_booking/services/services_firestore_service.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as Path;
 
 class AddService extends StatefulWidget {
-  const AddService({Key? key});
+   AddService({Key? key});
+
 
   @override
   State<AddService> createState() => _AddServiceState();
@@ -34,6 +37,7 @@ class _AddServiceState extends State<AddService> {
 
   // Method to upload image to Firebase Storage and add service to Firestore
   Future<void> _addService() async {
+      ServiceFirestore serviceFirestore = ServiceFirestore();
     try {
       if (_servicePhoto != null) {
         String fileName = Path.basename(_servicePhoto!.path);
@@ -45,13 +49,15 @@ class _AddServiceState extends State<AddService> {
           String serviceDescription = _serviceDescriptionController.text.trim();
           int serviceDuration = int.tryParse(_serviceDurationController.text.trim()) ?? 0;
           double servicePrice = double.tryParse(_servicePriceController.text.trim()) ?? 0.0;
-          await FirebaseFirestore.instance.collection('services').add({
-            'name': serviceName,
-            'description': serviceDescription,
-            'photo': photoURL,
-            'duration': serviceDuration,
-            'price': servicePrice,
-          });
+          // await FirebaseFirestore.instance.collection('services').add({
+          //   'name': serviceName,
+          //   'description': serviceDescription,
+          //   'photo': photoURL,
+          //   'duration': serviceDuration,
+          //   'price': servicePrice,
+          // });
+          Service service = Service(id: "",name: serviceName,description: serviceDescription,photo: photoURL,duration: serviceDuration,price: servicePrice);
+          await serviceFirestore.addService(service);
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text('Service added successfully'),
           ));

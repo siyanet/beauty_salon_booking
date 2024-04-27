@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_beauty_salon_booking/controllers/time_slot_generator.dart';
 import 'package:flutter_beauty_salon_booking/firebase_options.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_Appointment_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_home_page_real.dart';
@@ -21,7 +22,7 @@ void main() async{
    
    WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-     //TimeSlotGenerator.generateTimeSlots(startDate: DateTime.now(),numberOfDays: 60,startHour: 8,endHour:16 ,intervalMinutes: 120);
+  //TimeSlotGenerator.generateTimeSlots(startDate: DateTime.now(),numberOfDays: 6,startHour: 8,endHour:16 ,intervalMinutes: 120);
    runApp(const MainApp());
 
 }
