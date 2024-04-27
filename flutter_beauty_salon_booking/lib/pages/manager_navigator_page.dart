@@ -4,7 +4,9 @@ import 'package:flutter_beauty_salon_booking/pages/manger_home_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class ManagerNavigatorPage extends StatefulWidget {
-  const ManagerNavigatorPage({Key? key}) : super(key: key);
+
+  
+  const ManagerNavigatorPage({Key? key, }) : super(key: key);
 
   @override
   _ManagerNavigatorPageState createState() => _ManagerNavigatorPageState();
@@ -13,14 +15,23 @@ class ManagerNavigatorPage extends StatefulWidget {
 class _ManagerNavigatorPageState extends State<ManagerNavigatorPage> {
   int _selectedIndex = 0;
 
+
+
   final List<Widget> _pages = [
     ManagerHomePage(),
     ManagerServicePage(),
   ];
-
+  // else if (role == "Cutomer")
+  // [
+  //   CustomerHomePage(),
+  //   CustomerServicePage(),
+  // ];
+   
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+      
       body: _pages[_selectedIndex],
       bottomNavigationBar: GNav(
         selectedIndex: _selectedIndex,

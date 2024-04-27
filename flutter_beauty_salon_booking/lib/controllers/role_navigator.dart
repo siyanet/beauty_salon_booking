@@ -1,10 +1,6 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-
 class RoleNavigator{
  // final UserCredential userCredential;
 //  RoleNavigator(this.userCredential);
@@ -17,7 +13,7 @@ class RoleNavigator{
     DocumentSnapshot userSnapshot = await userRef.get();
 
     // Check if the user document exists
-    if (userSnapshot.exists) {
+    if (!userSnapshot.exists) {
       // Get the data map from the user document
       Map<String, dynamic> userData = userSnapshot.data() as Map<String, dynamic>;
 

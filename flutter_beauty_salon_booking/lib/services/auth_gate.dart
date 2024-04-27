@@ -40,9 +40,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_beauty_salon_booking/pages/cusomer_navigator_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_home_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/login_pages.dart';
 import 'package:flutter_beauty_salon_booking/pages/manager_navigator_page.dart';
+import 'package:flutter_beauty_salon_booking/providers/selected_provider.dart';
+import 'package:provider/provider.dart';
 
 
 class AuthGate extends StatelessWidget {
@@ -56,7 +59,8 @@ class AuthGate extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             // User is signed in
-            String? uid = snapshot.data!.uid;
+            String uid = snapshot.data!.uid;
+           
             return FutureBuilder<String?>(
               future: getUserRole(uid),
               builder: (context, roleSnapshot) {
@@ -68,9 +72,11 @@ class AuthGate extends StatelessWidget {
                   String role = roleSnapshot.data!;
                   if (role == "Manager") {
                     return ManagerNavigatorPage();
-                  } else if (role == "Customer") {
-                    return CustomerHomePage();
-                  } else {
+                   }
+                  else if (role == "Customer") {
+                    return CustomerNavigatorPage();
+                 } 
+                  else {
                     // Handle other roles
                     return Scaffold(
                       body: Center(child: Text("Unknown role")),
@@ -96,14 +102,16 @@ class AuthGate extends StatelessWidget {
   Future<String?> getUserRole(String? userId) async {
     if (userId != null) {
       try {
-        // Reference to the user document in Firestore
-        DocumentSnapshot<Map<String, dynamic>> userSnapshot =
-            await FirebaseFirestore.instance.collection('users').doc(userId).get();
+        QuerySnapshot<Map<String, dynamic>> userSnapshot = await FirebaseFirestore.instance
+    .collection('users')
+    .where('id', isEqualTo: userId)
+    .get();
 
-        // Check if the user document exists
-        if (userSnapshot.exists) {
-          // Get the data map from the user document
-          Map<String, dynamic> userData = userSnapshot.data()!;
+if (userSnapshot.docs.isNotEmpty) {
+  // Access the first document found with the matching 'id' field
+ 
+        // Reference to the user document in Firestore
+        DocumentSnapshot<Map<String, dynamic>> userData = userSnapshot.docs.first;
 
           // Retrieve and return the "role" field
           return userData['role'];
@@ -122,4 +130,19 @@ class AuthGate extends StatelessWidget {
       return null;
     }
   }
+  void getCurrentUserId() {
+  // Retrieve the current user
+  User? user = FirebaseAuth.instance.currentUser;
+
+  if (user != null) {
+    // If the user is signed in, get the UID
+    String uid = user.uid;
+    print('Current user ID (UID): $uid');
+  } else {
+    // If no user is signed in
+    print('No user is currently signed in.');
+  }
+}
+  
+  
 }

@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_beauty_salon_booking/codes/authentication.dart';
 import 'package:flutter_beauty_salon_booking/components/my_alert_dialog.dart';
 import 'package:flutter_beauty_salon_booking/components/my_image.dart';
 import 'package:flutter_beauty_salon_booking/components/my_text_field.dart';
