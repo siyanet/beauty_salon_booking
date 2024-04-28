@@ -37,13 +37,89 @@ Stream<List<Service>> getAllServicesStream() {
     }).toList();
   });
 }
-Stream <Service?> getServiceByIdStream(String serviceId) {
-  return servicesCollection.doc(serviceId)
+// Stream <Service?> getServiceByIdStream(String serviceId) {
+//   return servicesCollection.where('id', isEqualTo: serviceId).limit(1)
+//       .snapshots()
+//       .map((snapshot) {
+//          if (snapshot.docs.isNotEmpty) {
+//       // Map the document data to TimeSlot object
+//       Map<String, dynamic> data = snapshot.docs.first.data();
+     
+//       return Service(
+//         id: data['id'],
+//         name: data['name'],
+//         description: data['description'],
+//         price: data['price'],
+//         duration: data['duration'],
+//         photo: data['photo'],
+//       );
+//     }}
+    
+//     else{
+//       return null;
+//     }
+//     });
+//     }
+
+
+// Stream<Service?> getServiceByIdStream(String serviceId) {
+//   return servicesCollection
+//       .where('id', isEqualTo: serviceId)
+//       .limit(1) // Limit to only one document (optional)
+//       .snapshots()
+//       .map((snapshot) {
+//     if (snapshot.docs.isNotEmpty) {
+//       // Map the document data to TimeSlot object
+//       Map<String, dynamic> data = snapshot.docs!.first.data();
+//       return Service(
+//         id: snapshot.docs.first.id,
+//        name: data['name'],
+//          description: data['description'],
+//          price: data['price'],
+//          duration: data['duration'],
+//          photo: data['photo'],
+//         // Add other fields as needed
+//       );
+//     } else {
+//       // Return null if no document found
+//       return null;
+//     }
+//   });
+// }
+
+//Stream<Service?> getServiceByIdStream(String serviceId) {
+//   return servicesCollection
+//       .where('id', isEqualTo: serviceId)
+//       .limit(1) // Limit to only one document (optional)
+//       .snapshots()
+//       .map((snapshot) {
+//     if (snapshot.docs.isNotEmpty) {
+//       // Map the document data to Service object
+//       Object? data = snapshot.docs.first.data();
+//       return Service(
+//         id: data['id']!,
+//         name: data['name']!,
+//         description: data!['description'],
+//         price: data['price'],
+//         duration: data['duration'],
+//         photo: data['photo'],
+//         // Add other fields as needed
+//       );
+//     } else {
+//       // Return null if no document found
+//       return null;
+//     }
+//   });
+// }
+Stream<Service?> getServiceByIdStream(String serviceId) {
+  return servicesCollection
+      .where('id', isEqualTo: serviceId)
+      .limit(1) // Limit to only one document (optional)
       .snapshots()
-      .map((doc) {
-      if (doc.exists) { 
-     {
-      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      .map((snapshot) {
+    if (snapshot.docs.isNotEmpty) {
+      // Map the document data to Service object
+      Map<String, dynamic> data = snapshot.docs.first.data() as Map<String,dynamic>;
       return Service(
         id: data['id'],
         name: data['name'],
@@ -51,14 +127,18 @@ Stream <Service?> getServiceByIdStream(String serviceId) {
         price: data['price'],
         duration: data['duration'],
         photo: data['photo'],
+        // Add other fields as needed
       );
-    }}
-    
-    else{
+    } else {
+      print("heloo");
+      // Return null if no document found
       return null;
     }
-    });
-    }
+  });
+}
+
+
+
 Stream<List<Service>> getServicesByListIdsStream(List<String> serviceIds) {
   return servicesCollection.where('id', whereIn: serviceIds)
       .snapshots()

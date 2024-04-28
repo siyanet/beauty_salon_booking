@@ -4,6 +4,7 @@ import 'package:flutter_beauty_salon_booking/pages/customer_home_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_home_page_real.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_appointment_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/displayservices.dart';
+import 'package:flutter_beauty_salon_booking/pages/displaytimeslottesting.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class CustomerNavigatorPage extends StatefulWidget {
@@ -22,8 +23,9 @@ class _CustomerNavigatorPageState extends State<CustomerNavigatorPage> {
 
   final List<Widget> _pages = [
    CustomerHomePageReal(),
-   displayservice(),
-  // CustomerAppointmentPage(),
+  // displayservice(),
+  CustomerAppointmentPage(),
+ // TimeSlotDisplay(),
  // CustomerServicePage(),
 
   ];

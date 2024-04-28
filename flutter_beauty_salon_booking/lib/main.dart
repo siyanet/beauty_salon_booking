@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_beauty_salon_booking/controllers/time_slot_generator.dart';
+
 import 'package:flutter_beauty_salon_booking/firebase_options.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_Appointment_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_home_page_real.dart';
-import 'package:flutter_beauty_salon_booking/pages/displayservices.dart';
+
 import 'package:flutter_beauty_salon_booking/pages/login_pages.dart';
 import 'package:flutter_beauty_salon_booking/pages/manager_service_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/manger_home_page.dart';
@@ -16,6 +16,7 @@ import 'package:flutter_beauty_salon_booking/providers/selected_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/service_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/time_slot_provider.dart';
 import 'package:flutter_beauty_salon_booking/services/auth_gate.dart';
+import 'package:flutter_beauty_salon_booking/themes/lightmode.dart';
 import 'package:provider/provider.dart';
 
 void main() async{
@@ -51,6 +52,7 @@ ChangeNotifierProvider(create: (_) => BookingProvider()),
 
       ],
     child:   MaterialApp(
+      theme: myThemeData,
       debugShowCheckedModeBanner: false,
       home: AuthGate(),
   // home: CustomerAppointmentPage;
@@ -63,7 +65,7 @@ ChangeNotifierProvider(create: (_) => BookingProvider()),
         "/manager_service_page":(context) => ManagerServicePage(),
         "/add_service_page":(context) => AddService(),
         '/customer_appointment_page':(context) => CustomerAppointmentPage(),
-        '/displayservice':(context) =>displayservice(),
+     //   '/displayservice':(context) =>displayservice(),
    
       },
     ));

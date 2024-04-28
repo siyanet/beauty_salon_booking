@@ -38,19 +38,18 @@ class TimeSlotServices{
 
 
 Stream<TimeSlot?> getTimeSlotStreamById(String timeSlotId) {
-  return FirebaseFirestore.instance
-      .collection('your_collection_name')
+  return timeSlotCollection
       .where('id', isEqualTo: timeSlotId)
       .limit(1) // Limit to only one document (optional)
       .snapshots()
       .map((snapshot) {
     if (snapshot.docs.isNotEmpty) {
       // Map the document data to TimeSlot object
-      Map<String, dynamic> data = snapshot.docs.first.data();
+      Map<String, dynamic> data = snapshot.docs.first.data() as Map<String,dynamic>;
       return TimeSlot(
-        id: snapshot.docs.first.id,
-        startTime: data['start_time'],
-        endTime: data['end_time'],
+        id: data['id'],
+        startTime: (data['startTime']as Timestamp).toDate(),
+        endTime: (data['endTime']).toDate(),
         // Add other fields as needed
       );
     } else {
