@@ -18,9 +18,14 @@ import 'package:flutter_beauty_salon_booking/services/time_slot_services.dart';
 import 'package:flutter_beauty_salon_booking/services/user_service.dart';
 import 'package:provider/provider.dart';
 
-class ManagerHomePage extends StatelessWidget {
+class ManagerHomePage extends StatefulWidget {
    ManagerHomePage({super.key});
 
+  @override
+  State<ManagerHomePage> createState() => _ManagerHomePageState();
+}
+
+class _ManagerHomePageState extends State<ManagerHomePage> {
   @override
   Widget build(BuildContext context) {
     List<String> serviceIds = [];
@@ -102,15 +107,4 @@ class ManagerHomePage extends StatelessWidget {
 
 
 
-   // body:Center( 
-      //  child: ElevatedButton(child: Icon(Icons.logout,size: 30,color: Colors.black),
-      // onPressed: (){
-      //    authService.signOut();
-      //  //  a code to generate time slot
-      //     //  TimeSlotGenerator timeSlotGenerator = TimeSlotGenerator(startDate: DateTime.now(), numberOfDays: 60, startHour: 8, endHour: 17, intervalMinutes: 120);
-
-      //     //       timeSlotGenerator.genereateTimeSlot();
-      // },)
-
-      // )
       
