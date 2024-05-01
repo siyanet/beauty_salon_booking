@@ -9,6 +9,8 @@ class MyTextField extends StatelessWidget{
   @override 
   Widget build(BuildContext context){
     return TextField(
+      textCapitalization: TextCapitalization.words,
+      style:  Theme.of(context).textTheme.displayMedium,
       controller: controller,
       obscureText: obsecureText,
       decoration: InputDecoration(

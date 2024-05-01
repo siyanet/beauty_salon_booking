@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_beauty_salon_booking/firebase_options.dart';
+import 'package:flutter_beauty_salon_booking/pages/bookingdisplay.dart';
+
 import 'package:flutter_beauty_salon_booking/pages/customer_Appointment_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_home_page_real.dart';
 
@@ -15,6 +17,7 @@ import 'package:flutter_beauty_salon_booking/providers/booking_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/selected_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/service_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/time_slot_provider.dart';
+import 'package:flutter_beauty_salon_booking/providers/user_provider.dart';
 import 'package:flutter_beauty_salon_booking/services/auth_gate.dart';
 import 'package:flutter_beauty_salon_booking/themes/lightmode.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +42,7 @@ ChangeNotifierProvider(create: (_) => ServiceProvider()),
 ChangeNotifierProvider(create: (_) => SelectedProvider()),
 ChangeNotifierProvider(create: (_) => TimeSlotProvider()),
 ChangeNotifierProvider(create: (_) => BookingProvider()),
-//ChangeNotifierProvider(create: (_) => UserProvider()),
+ChangeNotifierProvider(create: (_) => UserProvider()),
 //ChangeNotifierProvider(create: (_) => TimeSlotProvider(DateTime.now())),
   //       ChangeNotifierProxyProvider<SelectedProvider, TimeSlotProvider>(
   //         create: (_) => TimeSlotProvider(DateTime.now()),
@@ -65,7 +68,8 @@ ChangeNotifierProvider(create: (_) => BookingProvider()),
         "/manager_service_page":(context) => ManagerServicePage(),
         "/add_service_page":(context) => AddService(),
         '/customer_appointment_page':(context) => CustomerAppointmentPage(),
-     //   '/displayservice':(context) =>displayservice(),
+        '/bookingDisplay':(context) => BookingListWidget(),
+    
    
       },
     ));

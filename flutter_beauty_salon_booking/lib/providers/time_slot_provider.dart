@@ -9,7 +9,10 @@ class TimeSlotProvider extends ChangeNotifier{
 
   List <TimeSlot> _timeSlotBySelectedDate = [];
   List <TimeSlot> _timeSlotAll = [];
+   List<TimeSlot> _timeSlotByListOfIds = [];
     List <TimeSlot> get timeSlotAll => _timeSlotAll ;
+    List<TimeSlot> get timeSlotByListOfIds => _timeSlotByListOfIds;
+   
   
   List<TimeSlot> get timeSlotBySelectedDate => _timeSlotBySelectedDate;
   TimeSlot ? _timeSlotById;
@@ -35,10 +38,15 @@ Future<void>setTimeSlotAll()async{
       _timeSlotById = timeSlot;
       notifyListeners();
     });
-  
-    
-
   }
+Future<void>setTimeSlotByListOfIds(List<String>timeSlotIds) async{
+  timeSlotServices.getTimeSlotByListOfIds(timeSlotIds).listen((timeSlots){
+   _timeSlotByListOfIds = timeSlots;
+   notifyListeners();
+
+  });
+}
+
   Future<void>_initializeServices()async{
    await setTimeSlotAll();
     notifyListeners();

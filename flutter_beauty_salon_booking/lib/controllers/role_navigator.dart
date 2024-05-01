@@ -6,16 +6,18 @@ class RoleNavigator{
 //  RoleNavigator(this.userCredential);
   void navigate(context,UserCredential userCredential) async{
    try {
-    // Reference to the user document in Firestore
-    DocumentReference userRef = FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid);
+    Query<Map<String, dynamic>> userRef = FirebaseFirestore.instance.collection('users').where('id', isEqualTo: userCredential.user!.uid);
 
-    // Get the user document snapshot
-    DocumentSnapshot userSnapshot = await userRef.get();
+    // Reference to the user document in Firestore
+  QuerySnapshot<Map<String, dynamic>> userSnapshot = await userRef.get();
+
+
 
     // Check if the user document exists
-    if (!userSnapshot.exists) {
+    if (!userSnapshot.docs.isEmpty) {
+      DocumentSnapshot<Map<String, dynamic>> userData = userSnapshot.docs.first;
       // Get the data map from the user document
-      Map<String, dynamic> userData = userSnapshot.data() as Map<String, dynamic>;
+
 
       // Retrieve and return the "role" field
       String role = userData['role'];

@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_beauty_salon_booking/models/time_slot_model.dart';
 
@@ -75,6 +77,20 @@ Stream<List<TimeSlot>>getTimeSlotStreamAll(){
         );
     }).toList();
     });
+  }
+  Stream<List<TimeSlot>>getTimeSlotByListOfIds(List<String> timeSlotIds){
+    return timeSlotCollection.where('id',whereIn: timeSlotIds).snapshots().map(
+      (snapshot){
+        return snapshot.docs.map((doc){
+          Map<String,dynamic> data = doc.data() as Map<String,dynamic>;
+          return TimeSlot(
+            id: data['id'],
+            startTime: (data['startTime'] as Timestamp).toDate(),
+            endTime: (data['endTime'] as Timestamp).toDate(),
+          );
+        }).toList();
+      }
+    );
   }
 
 

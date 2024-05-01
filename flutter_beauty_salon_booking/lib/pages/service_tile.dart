@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_beauty_salon_booking/components/mybutton.dart';
 import 'package:flutter_beauty_salon_booking/models/services_model.dart';
 import 'package:flutter_beauty_salon_booking/models/time_slot_model.dart';
 import 'package:flutter_beauty_salon_booking/pages/time_slot_page.dart';
@@ -22,6 +23,7 @@ import 'package:provider/provider.dart';
 //final Service service = serviceSnapshot.data() as Map<String, dynamic>;
    return Expanded(
      child: Card(
+      color: Theme.of(context).colorScheme.secondary,
        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
@@ -53,11 +55,12 @@ import 'package:provider/provider.dart';
                                     children: [
                                       Text(
                       service.name,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style:  Theme.of(context).textTheme.bodyLarge,
                                       ),
                                      
                                       Text(
                       service.description,
+                      style:  Theme.of(context).textTheme.bodyMedium,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                                       ),
@@ -67,19 +70,22 @@ import 'package:provider/provider.dart';
                       children: [
                         Text(
                           'price \$${service.price.toStringAsFixed(2)}',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                         // IconButton(
                         //   icon: Icon(Icons.home),
-                        ElevatedButton(
-                          child: Text("Book"),
-                         style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(0), // Make button non-circular
-          ),
-                         ),),
-                          onPressed: () {
+          //               ElevatedButton(
+          //                 child: Text("Book"),
+          //                style: ButtonStyle(
+          //              backgroundColor: MaterialStateProperty.Color.pink
+          //                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          // RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.circular(0), // Make button non-circular
+          // ),
+          //                ),),
+           MyButton(text: "book", 
+                         onTap:
+                            () {
                               showDatePicker(
                         context: context,
                         initialDate: DateTime.now(),

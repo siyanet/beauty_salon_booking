@@ -1,58 +1,24 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_beauty_salon_booking/components/my_alert_dialog.dart';
 import 'package:flutter_beauty_salon_booking/components/my_image.dart';
 import 'package:flutter_beauty_salon_booking/components/my_text_field.dart';
 import 'package:flutter_beauty_salon_booking/components/mybutton.dart';
-import 'package:flutter_beauty_salon_booking/controllers/role_navigator.dart';
-import 'package:flutter_beauty_salon_booking/models/users_model.dart';
-import 'package:flutter_beauty_salon_booking/services/auth_services.dart';
-import 'package:flutter_beauty_salon_booking/services/user_service.dart';
-
+import 'package:flutter_beauty_salon_booking/controllers/register_controller.dart';
 class register extends StatelessWidget{
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
-  void register_method(BuildContext context) async{
-    final _authService = AuthService();
-    final _userService = UserService();
-    try{
-    UserCredential userCredential =   await _authService.signUpWithEmailAndPassword(emailController.text, passwordcontroller.text);
-   
-     UserModel userone = UserModel(id: userCredential.user!.uid,
-     firstName:firstNameController.text,
-     lastName: lastNameController.text,
-     phoneNumber: phoneNumberController.text,
-     role: "Customer");
-_userService.addUser(userone);
-
-    RoleNavigator roleNavigator = RoleNavigator();
-    roleNavigator.navigate(context,userCredential);
-      //  Navigator.pop(context);
-      //   Navigator.pushNamed(context,'/home_page');
-
-
-    }
-    catch (e){
-     showDialog(context: context, builder: (context) => MyAlertDialog(title: e.toString()));
-    }
-  }
   register({super.key});
-  
   @override 
   Widget build(BuildContext context){
-    
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Column(
+      body: 
+     SingleChildScrollView(child: Column(
         mainAxisAlignment:  MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-        
-           
+        children: [       
        MyImage(
           path: "assets/logo.png",
           width: 90,
@@ -83,17 +49,17 @@ _userService.addUser(userone);
        child: MyTextField(controller: passwordcontroller, obsecureText: true, hintText: "enter password",)),  
             SizedBox(height: 10),
             
-        MyButton(onTap: () {register_method(context);}
+        MyButton(onTap: () {
+          RegisterController reg =  RegisterController(emailController: emailController, firstNameController: firstNameController, passwordcontroller: passwordcontroller, lastNameController: lastNameController, phoneNumberController: phoneNumberController);
+          reg.register_method(context);}
              , text: "sign up"),
         GestureDetector(
-        child: Text("have account login"),
+        child: Text("have account login",style: Theme.of(context).textTheme.bodyLarge),
         onTap: () {
           Navigator.pushNamed(context, "/login_page");
         }
        ),
-
-
-      ],)
+      ],))
     );
   }
 

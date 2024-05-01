@@ -49,13 +49,7 @@ class _AddServiceState extends State<AddService> {
           String serviceDescription = _serviceDescriptionController.text.trim();
           int serviceDuration = int.tryParse(_serviceDurationController.text.trim()) ?? 0;
           double servicePrice = double.tryParse(_servicePriceController.text.trim()) ?? 0.0;
-          // await FirebaseFirestore.instance.collection('services').add({
-          //   'name': serviceName,
-          //   'description': serviceDescription,
-          //   'photo': photoURL,
-          //   'duration': serviceDuration,
-          //   'price': servicePrice,
-          // });
+        
           Service service = Service(id: "",name: serviceName,description: serviceDescription,photo: photoURL,duration: serviceDuration,price: servicePrice);
           await serviceFirestore.addService(service);
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -125,10 +119,7 @@ class _AddServiceState extends State<AddService> {
                       fit: BoxFit.cover,
                     )
                   :
-                  //  SizedBox(
-                  //     height: 200,
-                  //     child: Center(child: Text('Selecte image')),
-                  //   ),
+               
                   
               TextButton(
                 onPressed: _pickImage,

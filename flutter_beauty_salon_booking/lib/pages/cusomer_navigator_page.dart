@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beauty_salon_booking/controllers/my_app_bar.dart';
-import 'package:flutter_beauty_salon_booking/pages/customer_home_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_home_page_real.dart';
 import 'package:flutter_beauty_salon_booking/pages/customer_appointment_page.dart';
-import 'package:flutter_beauty_salon_booking/pages/displayservices.dart';
-import 'package:flutter_beauty_salon_booking/pages/displaytimeslottesting.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class CustomerNavigatorPage extends StatefulWidget {
@@ -38,6 +34,8 @@ class _CustomerNavigatorPageState extends State<CustomerNavigatorPage> {
       
       body: _pages[_selectedIndex],
       bottomNavigationBar: GNav(
+        color: Theme.of(context).colorScheme.inversePrimary,
+        activeColor: Theme.of(context).colorScheme.primary,
         selectedIndex: _selectedIndex,
         onTabChange: (index) {
           setState(() {
@@ -46,15 +44,16 @@ class _CustomerNavigatorPageState extends State<CustomerNavigatorPage> {
         },
         tabs: [
           GButton(
+             iconColor: Theme.of(context).colorScheme.inversePrimary,
             icon: Icons.home,
             text: "Home",
           ),
           GButton(
+            iconColor: Theme.of(context).colorScheme.inversePrimary,
             icon: Icons.design_services_rounded,
             text: "Services",
           ),
-          // GButton(icon: Icons.access_alarm,
-          // text: "hello",),
+        
         ],
       ),
     );

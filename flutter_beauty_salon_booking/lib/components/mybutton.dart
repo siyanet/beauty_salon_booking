@@ -9,15 +9,15 @@ class MyButton extends StatelessWidget{
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(20),
-        margin:  EdgeInsets.all(25),
+        padding: EdgeInsets.all(6),
+        margin:  EdgeInsets.all(6),
    
         decoration:  BoxDecoration(
           
           color:  Theme.of(context).colorScheme.primary,
-          borderRadius: BorderRadius.circular(20)),
+          borderRadius: BorderRadius.circular(5)),
         child: Center(child: Text(text,
-        style: TextStyle(color: Theme.of(context).colorScheme.tertiary) ,),
+        style: TextStyle(color: Theme.of(context).colorScheme.tertiary,fontSize: 20) ,),
         ),
         ),
     );

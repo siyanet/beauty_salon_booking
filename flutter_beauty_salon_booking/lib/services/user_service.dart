@@ -123,6 +123,20 @@ Stream<UserModel> getUser(String id) {
  
 }
 
+
+
+Stream<List<UserModel>> getUsersByListOfIds(List<String> userIds){
+  return userCollection.where('id', whereIn: userIds).snapshots().map((snapshot){
+    return snapshot.docs.map((doc){
+      Map<String,dynamic> data = doc.data() as Map<String,dynamic>;
+      return UserModel(firstName: data['first_name'],
+      id : data['id'],
+      lastName: data['last_name'],
+      phoneNumber: data['phone_number'],
+      role: data['role']
+      );
+    }).toList();
+  }); 
 }
       // Access data from the document
-    
+}

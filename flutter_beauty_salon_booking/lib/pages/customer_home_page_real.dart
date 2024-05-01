@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_beauty_salon_booking/controllers/home_upper_page.dart';
+import 'package:flutter_beauty_salon_booking/components/home_upper_page.dart';
+import 'package:flutter_beauty_salon_booking/components/salonspec.dart';
 import 'package:flutter_beauty_salon_booking/models/services_model.dart';
 import 'package:flutter_beauty_salon_booking/components/my_app_bar.dart';
 import 'package:flutter_beauty_salon_booking/pages/service_tile.dart';
@@ -18,15 +19,16 @@ class CustomerHomePageReal extends StatelessWidget {
     return servicesFetched.isEmpty
         ? Center(child: CircularProgressIndicator()) // Show a loading indicator when services are being fetched
          :
-         // Scaffold(
-        //   appBar: MyAppBar(),
-        //   body:
+         Scaffold(
+          appBar: MyAppBar(),
+          body:
         SingleChildScrollView(
            child:  Column(
       children: [
 
      SizedBox(child: HomeUpper()),
-    const  Center(child: Text("Services"),),
+     SalonSpec(),
+     Center(child: Text("Services",style:Theme.of(context).textTheme.bodyLarge,),),
         Positioned.fill(
           child: SizedBox(
             height: 500,
@@ -44,11 +46,11 @@ class CustomerHomePageReal extends StatelessWidget {
               },
             ),))])
        
-// )
+ )
  ); }
 }
 
-      
+        
       
       
       

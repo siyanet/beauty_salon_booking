@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_beauty_salon_booking/components/my_alert_dialog.dart';
 import 'package:flutter_beauty_salon_booking/components/my_image.dart';
 import 'package:flutter_beauty_salon_booking/components/my_text_field.dart';
@@ -44,7 +45,7 @@ class LogIn extends StatelessWidget{
         ),
         SizedBox(height: 10),
      Padding(padding: EdgeInsets.all(10),
-     child:   MyTextField(controller: emailcontroller, obsecureText: false,hintText: "enter username",),),
+     child:   MyTextField(controller: emailcontroller, obsecureText: false,hintText: "enter Email",),),
 
        
             SizedBox(height: 10),
@@ -62,6 +63,7 @@ class LogIn extends StatelessWidget{
           Navigator.pushNamed(context,"/password_reset_page");
           
         }),
+        SizedBox(height: 20),
 
         GestureDetector(
         child: Text("create account"),
@@ -70,12 +72,6 @@ class LogIn extends StatelessWidget{
           Navigator.pushNamed(context,"/registeration_page")
           
         }),
-        Text("continue with"),
-        GestureDetector(
-          child: Icon(Icons.home),
-          onTap: () => {},
-        )
-
 
       ],)
     );

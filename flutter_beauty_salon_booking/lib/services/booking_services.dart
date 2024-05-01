@@ -42,7 +42,7 @@ Stream<List<Booking>> getBookingStream(){
         return Booking(
           customerId: doc['customer_id'],
           serviceId: data['service_id'],
-          timeSlotId: data['timeSlot_id'],
+          timeSlotId: data['booking_time'],
           status: data['status'],
         );
       }).toList();

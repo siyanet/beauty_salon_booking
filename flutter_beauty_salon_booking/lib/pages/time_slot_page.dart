@@ -90,12 +90,13 @@ class TimeSlotPage extends StatelessWidget {
 
                       );
                       bookingServices.addBooking(booking);
-
-
+                     // snackbar();
+                      Navigator.of(context).pop();
 
 
                       
-                    }, child: Text("book")),
+                    }, child: Text("book")
+                    ),
                     TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
