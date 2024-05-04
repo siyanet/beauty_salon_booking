@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_beauty_salon_booking/models/services_model.dart';
 import 'package:flutter_beauty_salon_booking/services/services_firestore_service.dart';
@@ -59,9 +59,7 @@ class _AddServiceState extends State<AddService> {
           _clearTextFields();
           Navigator.pushNamed(context, "/manager_service_page");
         });
-      } else {
-        //print('No image selected');
-      }
+      } 
     } catch (error) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Error adding service: $error'),

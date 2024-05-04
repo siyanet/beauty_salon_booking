@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beauty_salon_booking/models/booking_model.dart';
 import 'package:flutter_beauty_salon_booking/models/time_slot_model.dart';
-import 'package:flutter_beauty_salon_booking/services/booking_services.dart';
 import 'package:flutter_beauty_salon_booking/services/time_slot_services.dart';
 
-// Assuming you have a Booking class defined somewhere
 
-// Assuming you have a Stream<List<Booking>> getBookingStream() function defined somewhere
+
 
 class BookingListWidget extends StatelessWidget {
- //final BookingServices booking = BookingServices();
  TimeSlotServices timeSlotServices = TimeSlotServices();
  List<String> timeSlotIds = ['1','2','0'];
 

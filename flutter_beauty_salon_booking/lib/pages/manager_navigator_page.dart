@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beauty_salon_booking/pages/bookingDisplay.dart';
 import 'package:flutter_beauty_salon_booking/pages/manager_service_page.dart';
 import 'package:flutter_beauty_salon_booking/pages/manger_home_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -24,11 +23,7 @@ class _ManagerNavigatorPageState extends State<ManagerNavigatorPage> {
    //BookingListWidget(),
     ManagerServicePage(),
   ];
-  // else if (role == "Cutomer")
-  // [
-  //   CustomerHomePage(),
-  //   CustomerServicePage(),
-  // ];
+
    
   @override
   Widget build(BuildContext context) {

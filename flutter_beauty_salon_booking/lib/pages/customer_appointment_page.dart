@@ -1,6 +1,5 @@
 
 
-import 'dart:js_interop';
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,7 +12,6 @@ import 'package:flutter_beauty_salon_booking/models/time_slot_model.dart';
 import 'package:flutter_beauty_salon_booking/providers/booking_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/service_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/time_slot_provider.dart';
-import 'package:flutter_beauty_salon_booking/providers/user_provider.dart';
 import 'package:flutter_beauty_salon_booking/services/booking_services.dart';
 import 'package:flutter_beauty_salon_booking/services/services_firestore_service.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +40,7 @@ class _CustomerAppointmentPageState extends State<CustomerAppointmentPage> {
     String uid = user!.uid;
         List<String> serviceIds = [];
     List<String>timeSlotIds = [];
-     //  List<Booking> userBookings = BookingLogic().userBooking(context);
+
          Provider.of<BookingProvider>(context).getUserBooking(uid);
        List<Booking> userBookings = Provider.of<BookingProvider>(context).userBooking;
        

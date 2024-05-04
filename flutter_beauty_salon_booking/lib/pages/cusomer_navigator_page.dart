@@ -19,10 +19,9 @@ class _CustomerNavigatorPageState extends State<CustomerNavigatorPage> {
 
   final List<Widget> _pages = [
    CustomerHomePageReal(),
-  // displayservice(),
+
   CustomerAppointmentPage(),
- // TimeSlotDisplay(),
- // CustomerServicePage(),
+
 
   ];
 

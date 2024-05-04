@@ -4,7 +4,6 @@ import 'package:flutter_beauty_salon_booking/models/services_model.dart';
 import 'package:flutter_beauty_salon_booking/models/time_slot_model.dart';
 import 'package:flutter_beauty_salon_booking/pages/time_slot_page.dart';
 import 'package:flutter_beauty_salon_booking/providers/selected_provider.dart';
-import 'package:flutter_beauty_salon_booking/providers/service_provider.dart';
 import 'package:flutter_beauty_salon_booking/services/time_slot_services.dart';
 import 'package:provider/provider.dart';
  class ServiceTile extends StatelessWidget {
@@ -19,8 +18,7 @@ import 'package:provider/provider.dart';
 
   @override
   Widget build(BuildContext context) {
-  //  final dynamic serviceSnapshot= Provider.of<ServiceProvider>(context).service;
-//final Service service = serviceSnapshot.data() as Map<String, dynamic>;
+ 
    return Expanded(
      child: Card(
       color: Theme.of(context).colorScheme.secondary,
@@ -33,9 +31,7 @@ import 'package:provider/provider.dart';
             Expanded(
               flex: 3,
              child: 
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: 
+           
                 Image.network(
                     service.photo, 
                      height: 300,
@@ -72,17 +68,7 @@ import 'package:provider/provider.dart';
                           'price \$${service.price.toStringAsFixed(2)}',
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        // IconButton(
-                        //   icon: Icon(Icons.home),
-          //               ElevatedButton(
-          //                 child: Text("Book"),
-          //                style: ButtonStyle(
-          //              backgroundColor: MaterialStateProperty.Color.pink
-          //                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          // RoundedRectangleBorder(
-          //   borderRadius: BorderRadius.circular(0), // Make button non-circular
-          // ),
-          //                ),),
+                       
            MyButton(text: "book", 
                          onTap:
                             () {

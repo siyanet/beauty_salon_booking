@@ -6,7 +6,6 @@ import 'package:flutter_beauty_salon_booking/models/time_slot_model.dart';
 import 'package:flutter_beauty_salon_booking/models/users_model.dart';
 import 'package:flutter_beauty_salon_booking/providers/selected_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/time_slot_provider.dart';
-import 'package:flutter_beauty_salon_booking/providers/user_provider.dart';
 import 'package:flutter_beauty_salon_booking/services/auth_services.dart';
 import 'package:flutter_beauty_salon_booking/services/booking_services.dart';
 import 'package:flutter_beauty_salon_booking/services/time_slot_services.dart';
@@ -22,12 +21,11 @@ class TimeSlotPage extends StatelessWidget {
   UserService userService = UserService();
 
   final TimeSlotServices timeSlotServices = TimeSlotServices();
- // final DateTime selectedDate = DateTime(2024, 5, 1);
+
 
   @override
   Widget build(BuildContext context) {
-  //    final timeSlotProvider = Provider.of<TimeSlotProvider>(context, listen: true);
- //   final List<TimeSlot> timeSlotsFetched = timeSlotProvider.timeSlot;
+ 
  Provider.of<TimeSlotProvider>(context).setTimeSlotBySelectedDate(selectedDate);
  final List<TimeSlot> timeSlotsFetched = Provider.of<TimeSlotProvider>(context).timeSlotBySelectedDate;
     return timeSlotsFetched.isEmpty
@@ -69,11 +67,7 @@ class TimeSlotPage extends StatelessWidget {
                 Service serviceSelected = Provider.of<SelectedProvider>(context).selectedService;
                 TimeSlot ? timeSlotSelected = Provider.of<SelectedProvider>(context).selectedTimeSlot;
                  UserModel  ? currentUser= Provider.of<SelectedProvider>(context).currentUser;
-    // final userProvider = Provider.of<UserProvider>(context,listen:true);
-    // final UserModel  ? currentUser = userProvider.currentUser;
-    // if(currentUser == null){
-    //   print("timeslotselected is null");
-    // }
+
                 return AlertDialog(
                   title: Text('do you want to book ${serviceSelected.name} ?'), // Title with variable values
                   content: Text('for ${dateSelected.day.toString()} in ${timeSlotSelected!.startTime.toString()} to ${timeSlotSelected.endTime.toString()}'),
@@ -90,7 +84,9 @@ class TimeSlotPage extends StatelessWidget {
 
                       );
                       bookingServices.addBooking(booking);
-                     // snackbar();
+                      timeSlotServices.bookTimeSlot(timeSlotId,timeSlotSelected);
+
+
                       Navigator.of(context).pop();
 
 
@@ -110,9 +106,7 @@ class TimeSlotPage extends StatelessWidget {
                  ],
               ),
            )
-      //     }
-      //   },
-      // ),
+     
     );
   }
 }

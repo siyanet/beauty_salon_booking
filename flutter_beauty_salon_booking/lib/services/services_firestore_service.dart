@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_beauty_salon_booking/models/services_model.dart';
 class ServiceFirestore{
 final CollectionReference servicesCollection  = FirebaseFirestore.instance.collection('services');
@@ -37,80 +36,7 @@ Stream<List<Service>> getAllServicesStream() {
     }).toList();
   });
 }
-// Stream <Service?> getServiceByIdStream(String serviceId) {
-//   return servicesCollection.where('id', isEqualTo: serviceId).limit(1)
-//       .snapshots()
-//       .map((snapshot) {
-//          if (snapshot.docs.isNotEmpty) {
-//       // Map the document data to TimeSlot object
-//       Map<String, dynamic> data = snapshot.docs.first.data();
-     
-//       return Service(
-//         id: data['id'],
-//         name: data['name'],
-//         description: data['description'],
-//         price: data['price'],
-//         duration: data['duration'],
-//         photo: data['photo'],
-//       );
-//     }}
-    
-//     else{
-//       return null;
-//     }
-//     });
-//     }
 
-
-// Stream<Service?> getServiceByIdStream(String serviceId) {
-//   return servicesCollection
-//       .where('id', isEqualTo: serviceId)
-//       .limit(1) // Limit to only one document (optional)
-//       .snapshots()
-//       .map((snapshot) {
-//     if (snapshot.docs.isNotEmpty) {
-//       // Map the document data to TimeSlot object
-//       Map<String, dynamic> data = snapshot.docs!.first.data();
-//       return Service(
-//         id: snapshot.docs.first.id,
-//        name: data['name'],
-//          description: data['description'],
-//          price: data['price'],
-//          duration: data['duration'],
-//          photo: data['photo'],
-//         // Add other fields as needed
-//       );
-//     } else {
-//       // Return null if no document found
-//       return null;
-//     }
-//   });
-// }
-
-//Stream<Service?> getServiceByIdStream(String serviceId) {
-//   return servicesCollection
-//       .where('id', isEqualTo: serviceId)
-//       .limit(1) // Limit to only one document (optional)
-//       .snapshots()
-//       .map((snapshot) {
-//     if (snapshot.docs.isNotEmpty) {
-//       // Map the document data to Service object
-//       Object? data = snapshot.docs.first.data();
-//       return Service(
-//         id: data['id']!,
-//         name: data['name']!,
-//         description: data!['description'],
-//         price: data['price'],
-//         duration: data['duration'],
-//         photo: data['photo'],
-//         // Add other fields as needed
-//       );
-//     } else {
-//       // Return null if no document found
-//       return null;
-//     }
-//   });
-// }
 Stream<Service?> getServiceByIdStream(String serviceId) {
   return servicesCollection
       .where('id', isEqualTo: serviceId)

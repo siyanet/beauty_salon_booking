@@ -26,7 +26,6 @@ void main() async{
    
    WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  //TimeSlotGenerator.generateTimeSlots(startDate: DateTime.now(),numberOfDays: 6,startHour: 8,endHour:16 ,intervalMinutes: 120);
    runApp(const MainApp());
 
 }
@@ -43,14 +42,7 @@ ChangeNotifierProvider(create: (_) => SelectedProvider()),
 ChangeNotifierProvider(create: (_) => TimeSlotProvider()),
 ChangeNotifierProvider(create: (_) => BookingProvider()),
 ChangeNotifierProvider(create: (_) => UserProvider()),
-//ChangeNotifierProvider(create: (_) => TimeSlotProvider(DateTime.now())),
-  //       ChangeNotifierProxyProvider<SelectedProvider, TimeSlotProvider>(
-  //         create: (_) => TimeSlotProvider(DateTime.now()),
-  //         update: (_, selectedProvider, timeSlotProvider) {
-  //               // TimeSlotProvider(selectedProvider.selectedDate ?? DateTime.now()),
-  //                timeSlotProvider?.selectedDate = selectedProvider.selectedDate ?? DateTime.now();
-  //   return timeSlotProvider!;
-  //  } ),
+
 
 
       ],
@@ -58,7 +50,6 @@ ChangeNotifierProvider(create: (_) => UserProvider()),
       theme: myThemeData,
       debugShowCheckedModeBanner: false,
       home: AuthGate(),
-  // home: CustomerAppointmentPage;
        routes: {
         "/registeration_page":(context)=> register(),
         "/login_page":(context) => LogIn(),

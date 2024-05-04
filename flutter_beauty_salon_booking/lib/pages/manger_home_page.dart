@@ -13,9 +13,6 @@ import 'package:flutter_beauty_salon_booking/providers/booking_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/service_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/time_slot_provider.dart';
 import 'package:flutter_beauty_salon_booking/providers/user_provider.dart';
-import 'package:flutter_beauty_salon_booking/services/auth_services.dart';
-import 'package:flutter_beauty_salon_booking/services/time_slot_services.dart';
-import 'package:flutter_beauty_salon_booking/services/user_service.dart';
 import 'package:provider/provider.dart';
 
 class ManagerHomePage extends StatefulWidget {
